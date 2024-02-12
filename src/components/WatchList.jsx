@@ -43,7 +43,7 @@ function WatchList() {
     let temp = favourites.map((movie) => genreids[movie.genre_ids?.[0] || 'defaultGenreKey']);
     temp = new Set(temp); // imp
     setGenres(["All Genres", ...temp]);
-  },[favourites]);
+  },[]);
 
   let filteredArray = [];
 

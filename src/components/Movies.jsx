@@ -55,9 +55,6 @@ function Movies() {
   //console.log(watchList)
   async function fetchData(){
     try {
-      let moviesFromLS = localStorage.getItem('imdb')
-      moviesFromLS = JSON.parse(moviesFromLS) || []
-      setWatchList(moviesFromLS)
       setLoading(true);
       const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=cc2c80e4c16567ac20148744f6b599a5&page=${pageNum}`);
       setMovies(response.data.results);
@@ -69,7 +66,13 @@ function Movies() {
      
 }
   useEffect(() => {
+
     fetchData();
+    let moviesFromLS = localStorage.getItem('imdb')
+      moviesFromLS = JSON.parse(moviesFromLS) || []
+      setWatchList(moviesFromLS)
+      
+   
 
   }, [pageNum]);
 
@@ -101,9 +104,9 @@ function Movies() {
                style={{display : hovered === movie.id ? 'block' : 'none'}}
               >
                 {watchList.includes(movie) === false ? (
-                  <div onClick={() => addToWatchList(movie)}> "❤️" </div>
+                  <div onClick={() => addToWatchList(movie)}>❤️</div>
                 ) : (
-                  <div onClick={() => removeFromWatchList(movie)}>"🤍"</div>
+                  <div onClick={() => removeFromWatchList(movie)}>🤍</div>
                 )}
               </div>
 
