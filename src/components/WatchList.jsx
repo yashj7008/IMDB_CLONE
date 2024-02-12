@@ -123,11 +123,11 @@ function WatchList() {
           />
         </div>
       </div>
-      <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-        <table class='w-full border-collapse bg-white text-left text-sm text-gray-500"'>
-          <thead class="bg-gray-50 font-bold">
+      <div className="relative overflow-x-auto mx-auto  shadow-md sm:rounded-lg">
+        <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+          <thead className= "text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th class="px-6 py-4  font-medium text-black-900">Name</th>
+              <th className="text-xl pl-8 py-1">Name</th>
 
               <th>
                 <div className="flex cursor-pointer">
@@ -140,7 +140,7 @@ function WatchList() {
                     }}
 
                   />
-                  <div>Ratings</div>
+                  <div className="text-xl px-2 py-1">Ratings</div>
                   <img
                     src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-4.png"
                     className="ml-1"
@@ -157,14 +157,14 @@ function WatchList() {
                 <div className="flex cursor-pointer">
                   <img
                     src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-up-arrows-those-icons-lineal-those-icons-3.png"
-                    className="mr-1"
+                    className="mr-1 mt-0"
                     alt="Not found"
                     onClick={() => {
                       setPopularity(1);
                     }}
                     
                   />
-                  <div>Popularity</div>
+                  <div className="text-xl px-2 py-1">Popularity</div>
                   <img
                     src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-4.png"
                     className="ml-1"
@@ -178,7 +178,7 @@ function WatchList() {
 
               <th>
                 <div className="flex">
-                  <div>Genre</div>
+                  <div className="text-xl px-6 py-3">Genre</div>
                 </div>
               </th>
             </tr>
@@ -186,7 +186,7 @@ function WatchList() {
           <tbody class="divide-y divide-gray-100 border-t border-gray-100">
             {filteredArray.map((movie) => {
               return (
-                <tr class="hover:bg-gray-50">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                   <td class="flex items-center px-6 py-4 font-normal text-gray-900 space-x-2">
                     <img
                       alt=""
@@ -194,19 +194,19 @@ function WatchList() {
                       src={`https://image.tmdb.org/t/p/original/t/p/original/${movie.poster_path}`}
                     />
 
-                    <div class="font-medium text-gray-700  text-sm">
+                    <div class="font-medium text-gray-700  text-xl px-4 py-3">
                       {movie.title}
                     </div>
                   </td>
 
-                  <td className=" pl-6 py-4">{movie.vote_average}</td>
+                  <td className="text-xl  px-10 py-4 items-center">{movie.vote_average}</td>
 
-                  <td className="pl-6 py-4">{movie.popularity}</td>
+                  <td className="text-xl px-10 py-4 items-center">{movie.popularity}</td>
 
-                  <td className="py-4">{genreids[movie.genre_ids?.[0] || 'defaultGenreKey']}</td>
+                  <td className="text-xl px-10 py-4 items-center">{genreids[movie.genre_ids?.[0] || 'defaultGenreKey']}</td>
 
                   <td>
-                    <button className="text-red-600" onClick={() => del(movie)}>
+                    <button className="text-red-600 text-xl px-6 py-4 items-center" onClick={() => del(movie)}>
                       Delete
                     </button>
                   </td>
